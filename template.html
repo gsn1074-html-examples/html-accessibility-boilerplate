@@ -1,0 +1,283 @@
+<!doctype html> <!-- Level A 4.1.1 Parsing -->
+<html lang="en"> <!-- Level A 3.1.1 Language of Page -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Add a unique page title</title> <!-- Level A 2.4.2 Page Titled -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> <!-- Level AA 1.4.4 Resize Text -->
+  <link href="css/main.css" rel="stylesheet" />
+
+  <style>
+    /* Enables hidden text for screen readers */
+    .visuallyHidden {
+      border: 0; 
+      clip: rect(1px, 1px, 1px, 1px);
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+    }
+
+    /* Positions skip link off page until focused 1st tab on page */
+    .skip-link {
+      left: -100%;
+      position: absolute;
+    }
+
+    .skip-link:focus {
+      left: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <header> <!-- Level A 1.3.1 Info and Relationships, Level A 2.4.1 Bypass Blocks -->
+    <a class="skip-link" href="#main">Skip to main</a> <!-- Level A 2.4.1 Bypass Blocks -->
+
+    <!-- Level AA 2.4.5 Multiple ways to locate a web page within a set of web pages except where page is the result of, or step in a process -->
+    <!-- Also can just use site map (see footer) -->
+    <form action="/search" method="POST" role="search">
+      <label for="query">Search</label>
+      <input id="query" name="search" type="search" />
+      <button>Search</button>
+    </form>
+
+    <nav class="navigation" aria-label="site"> <!-- Level A 1.3.1 Info and Relationships, Level A 2.4.1 Bypass Blocks, Level AA 3.2.3 Consistent Navigation -->
+      <ul>  <!-- Level A 1.3.1 Info and Relationships -->
+        <li><a href="index.html">Home</a></li> <!-- Level A 2.4.4 Link Purpose -->
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1"> <!-- Level A 1.3.1 Info and Relationships, Level A 2.4.1 Bypass Blocks -->
+    <h1>Main title for content. Should match page title</h1> <!-- Level A 1.3.1 Info and Relationships, Level AA 2.4.6 Headings and Labels -->
+
+    <!--
+      Page content. Continue to use semantic elements like <section>, <ol>, <ul>,
+      <dl>, <table>, and <form>. Create a logical document outline/ structure
+      using header tags, <h2>-<h6>.
+
+      Ensure forms elements have labels, either explicit or implicit, and provide
+      clear instructions on usage including error identification and suggestion.
+
+    -->
+
+    <!-- TABLES -->
+    <!-- Properly marking up tables - Level A 1.3.1 Info and Relationships -->
+    <table>
+      <caption>List of Products</caption> <!-- not required, but must be first item in table if used -->
+      <thead>
+        <tr>
+          <th scope="col">Product</th> <!-- col and row scope allow screen reader to associate cells with headings -->
+          <th scope="col">Description</th>
+          <th scope="col">Cost</th>
+        </tr>
+      </thead>
+      <tfoot> <!-- tfoot is not required, but if you use it, it must come before tbody -->
+        <tr>
+          <td>Cost (with discount)</td>
+          <td>$300</td>
+        </tr>
+      </tfoot>
+      <tbody>
+          <tr>
+            <th scope="row">Basic Web Server</th>
+            <td>Basic server to host your basic site</td>
+            <td>$199/yr</td>
+          </tr>
+          <tr>
+              <th scope="row">Awesome Web Server</th>
+              <td>Awesome server to host your awesome site</td>
+              <td>$299/yr</td>
+            </tr>
+      </tbody>
+    </table>
+
+    <!-- Multiple/Nested headers example -->
+    <table>
+        <caption> <!-- not required, but must be first item in table if used -->
+          Bundles
+          <!-- Complex tables should have a summary (visible or not). The table summary attribute has been depricated in HTML5, so just add it to the caption -->
+          <!-- Try to avoid/break up complex tables as screen readers have a hard time with them generally -->
+          <span class="visuallyHidden">: This table has a list of bundles, which are collections of products and services.
+            The first column is the product or service ...</span>
+        </caption> 
+        <thead>
+          <tr>
+            <th id="prod" scope="col">Product</th> <!-- col and row scope allow screen reader to associate cells with headings -->
+            <th id="cost" scope="col">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <th id="basic" colspan="2" scope="colgroup">Basic Bundle</th>
+            </tr>
+            <tr>
+              <td headers="basic prod">Basic Web Server</td> <!-- List headers in order screen reader should read them -->
+              <td headers="basic cost">$199</td>
+            </tr>
+            <tr>
+                <td headers="basic prod">Basic Web Design</td>
+                <td headers="basic cost">$599</td>
+              </tr>
+        </tbody>
+        <tbody> <!-- You can break table up with multiple tbody tags -->
+            <tr>
+              <th id="awesome" colspan="2" scope="colgroup">Awesome Bundle</th>
+            </tr>
+            <tr>
+              <td headers="awesome prod">Awesome Web Server</td> 
+              <td headers="awesome cost">$299</td>
+            </tr>
+            <tr>
+                <td headers="awesome prod">Basic Web Design</td>
+                <td headers="awesome cost">$899</td>
+              </tr>
+        </tbody>
+      </table>
+
+      <!-- FORMS -->
+      <!-- Level AA 1.4.3 - Contrast - text and images of text has contrast ratio of at least 4.5:1 -->
+      <!-- Level A 1.3.1 - Info and Relationships - input fields need to have labels -->
+      <!-- Level AA 2.4.6 - Headings and Labels - input fields need to have labels -->
+      <!-- Level A 3.3.2 - Label or instructions - labels or instructions are provided for user input -->
+      <!-- Level A 3.3.2 - Label or instructions - if there are special formats (like for dates or currency) you need to provide instuctions for that as well -->
+      <!-- Level A 4.1.2 - Name, Role, Value - when creating custom components (widgets) they need to have the same level of accessibility as native html -->
+      <!-- Level A 1.3.3 - Sensory Characteristics - instructions cannot rely soley on sensory characteristics - like shape, size, visual location, etc. - You can say "click on the blue button below" as example -->
+      <!-- Level A 2.1.1 - Keyboard - all functionality is operable through keyboard without requiring specific timing -->
+      <!-- Level A 2.1.2 - No Keyboard Traps - focus can be moved away from a component using only a keyboard interface -->
+      <!-- Level AA 2.4.7 - Focus Visible - any keyboard interace has mode of operation where focus indicator is visible -->
+      <!-- Level A 1.4.1 - Use of color - color is not the only visual means of conveying information, indicating action, prompting response, or distinguishing visual element -->
+      <!-- Level A 3.3.1 - Error identification - if input error is automatically detected, the item is identified and error described in text -->
+      <!-- Level AA 3.3.3 - Error Suggestion - suggestions are provided on how to correct error unless it would jeopardize the security or purpose of the content -->
+      <!-- Level AA 3.3.4 - Error Prevention - pages that cause legal commitments or financial transactions or modify or delete user-controllable data,, must be reversiable, checked, and confirmed -->
+      <!-- Level A 2.2.1 - For each timeline that is set by the content - user can turn off, adjust or extend time limit (must be given 20 seconds to act) -->
+
+      <!-- try to keep non-field descriptive text out of the form, as once in the form, when screen readers enter a form, they go into forms mode which has a different set of sortcut keys, etc. -->
+      <p>We want to hear from you! Oh, also <span lang="es">se habla espanol!</span></p> <!-- Level AA 3.1.2 - Lanuage of parts - mark when parts of page are in a different language than the page -->
+
+      <form id="contact" action="/contact.php" method="POST" novalidate> <!-- novalidate turns off HTML5 validation - the HTML5 validation balloon are not accessible -->
+
+        <!-- You should never set a tab index higher than 0, use -1 or 0 -->
+        <!-- tab index should follow visual order on page, visual order on page should follow dom -->
+        <!-- -1 removes item from the natural tab order, but is still focusable via JS -->
+        <!-- 0 will add item to natual tab order, still focusable via JS -->
+        <section id="errors" aria-live="assertive" tabindex="-1"> <!-- aria-live allows screen readers to read dynamic content, tabindex -1 make it so it wont be a normal tabstop, but can be focused when there are errors -->
+          <!-- on error, set focus to this field -->
+          <!-- make error messages links to the associated field -->
+        </section>
+        <!-- 2.4.6 Headings and Labels, 1.3.1 - Info and Relationships -->
+        <label for="name" aria-live="assertive">Name (Required): <!-- aria-live allows on blur field error reading --> 
+          <span class="error-message">Name cannot be empty</span> <!-- hidden by default via css, set to display: inline-block when invalid -->
+        </label> <!-- for explicitly associates label with field -->
+        <input id="name" type="text" name="name" required aria-invalid="true" /> <!-- require tells screen readers of requirement, aria-invalid set to false via JS when valid -->
+
+        <label for="email">Email (Required):
+          <span class="error-message">Email cannot be empty</span>
+        </label> 
+        <input id="email" type="email" name="email" required aria-invalid="true"/> 
+
+        <label for="phone">Phone:</label> 
+        <input id="phone" type="tel" name="phone" required /> 
+
+        <fieldset>
+          <legend>Phone Number Type</legend> <!-- legend must be the first tag in fieldset -->
+
+          <label> <!-- Implicity label -->
+            <input type="radio" name="phone-type" value="home" /> Home
+          </label>
+
+          <label>
+            <input type="radio" name="phone-type" value="work" /> Work
+          </label>
+
+          <label>
+            <input type="radio" name="phone-type" value="cell" /> Cell
+          </label>
+
+        </fieldset>
+
+        <label for="comments" class="visuallyHidden">Comments (Required):</label> <!-- you can hide labels if sighted users would not benefit from them -->
+        <textarea id="comments" name="comments" required></textarea>
+
+      </form>
+
+      <!-- MEDIA -->
+      <!-- Level A 1.1.1 - Non-text Content - All non-text content has a text alternative that serves equivalent purpose -->
+      <!-- Level A 2.2.2 - Pause, Stop, Hide - Moving, blinking, scrolling or auto-updating info has method to pause, stop, or hide -->
+      <!-- Level A 2.3.1 - Three Flashes or Below Threshold - pages do not contain anything that flashes more than 3 times in 1 second -->
+      <!-- Level A 2.4.1 & 4.1.2 - Any embedded media using iframe should a label via the title attribute to allow them to jump over it -->
+
+      <!-- images -->
+      <!-- Level AA 1.4.5 -Images of Text - prefer real text over images of text -->
+      <!-- All images should use the alt tag, decoration only images should use "" as the value, screen readers will ignore them as decoration -->
+      <!-- Don't describe images literally in alt text, use its meaning/purpose. Also include any text that was in the image -->
+      <!-- svg -->
+      <!-- Add role="img" for semantics -->
+      <!-- Use the title tag,  add aria-labeledby referencing the title tag --> 
+      <!-- If necessary, add a description using des tag, and add aria-describedby referencing it -->
+
+      <!-- audio - podcasts, recorded news casts, tv/movie sound bites, etc. -->
+      <!-- Level A 1.2.1 Audio only and Video only (prerecorded) - an alternative is provided that presents equivalent info -->
+      <!-- Provide transcript, speech recognition, paid service, manual etc. - link immediate after the audio -->
+      <!-- Level A 1.4.2 - Audio control - autoplay audio longer than 3 seconds should have controls pause, stop, or control volume, independent of system controls -->
+
+      <!-- video -->
+      <!-- Level A 1.2.3 - Audio Description of media alternative (prerecorded) - provide an alternative -->
+      <!-- Level A 1.2.1 - Captions (prerecorded) -->
+      <!-- Level AA 1.2.4 - Captions (live) -->
+      <!-- Open captions are embedded into video, closed captions are overlay, toggled on/off -->
+      <!-- Prerecorded caption options, Youtube auto-subtitle, upload a transcript and sync, manual entry/Video captioning services/Manual -->
+      <!-- Live caption options, Live professional stenographer only option -->
+      <!-- Level AA 1.2.5 - Audio Description (prerecorded) - provide all non-dialog elements that contribute to meaning of video -->
+
+      <!-- RESPONSIVE ISSUES -->
+      <!-- unexpected context switching -->
+      <!-- Level A 3.2.2 On Input - changing setting of UI component does not automatically change change context unless user has been advised, ex. dropdown nav that auto navigates on focus -->
+      
+      <!-- order of content/focus -->
+      <!-- Level A 1.3.2 Meaningful Sequence - visual order must match the dom order if it is necessary for meaning -->
+      <!-- Level A 2.4.3 Focus Order - if pages can be navigated sequentially or it affects meaning or operation, focusable components receive focus in an order the preserves it-->
+      <!-- Avoid auto focus or automatically advancing focus to next field in form-->
+      <!-- Level A 3.2.1 - On Focus - when a component receives focus, it does not initiate a change in context -->
+
+      <!-- Other -->
+      <!-- Be carefull with offscreen content as tab items are still in the tab order, it might be best to hide them to remove them from order, can seem like a tab trap -->
+      <!-- Options to hide content - Html 5 [hidden] attribute, display: none, visibility: hidden, aria-hidden=true is least preferable as it only hides from screen readers -->
+      <!-- Level A 1.4.4 - Resizing Text - Use em, rem and % instead of px -->
+
+
+  </main>
+
+  <!-- aside is optional, but if you have a sidebar, then aside is perfect -->
+  <aside class="sidebar"> <!-- Level A 1.3.1 Info and Relationships, Level A 2.4.1 Bypass Blocks -->
+    <nav class="navigation" aria-label="page"> <!-- Level A 1.3.1 Info and Relationships, Level A 2.4.1 Bypass Blocks -->
+      <ul>  <!-- Level A 1.3.1 Info and Relationships, Level A 2.4.1 Bypass Blocks -->
+        <li><a href="link1.html">Read More</a></li> <!-- Level A 2.4.4 Link Purpose (link below is example of making link purpose explicit for screen readers) -->
+        <li><a href="link2.html">Read More<span class="visuallyHidden"> on our products page</span></a></li>
+        <li><a href="link3.html">Read More</a></li>
+        <li><a href="link4.html">Read More</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <footer> <!-- Level A 1.3.1 Info and Relationships, Level A 2.4.1 Bypass Blocks -->
+    <nav aria-label="site"> <!-- Level A 1.3.1 Info and Relationships, Level A 2.4.1 Bypass Blocks -->
+      <ul>
+        <li><a href="index.html">Home</a></li> <!-- Level A 2.4.4 Link Purpose -->
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </nav>
+
+    <a href="sitemap.html">Site Map</a> <!-- Level AA 2.4.5 Multiple Ways -->
+  </footer>
+</body>
+
+</html>
