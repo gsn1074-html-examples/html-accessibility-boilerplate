@@ -6,7 +6,3 @@ This is a based on a boilerplate created by Gerard K. Cohen for this PluralSight
 
 ## Reference
 https://app.pluralsight.com/library/courses/web-accessibility-meeting-guidelines/table-of-contents
-
-## Development server
-
-Run `npm start` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
